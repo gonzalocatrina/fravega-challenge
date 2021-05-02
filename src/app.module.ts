@@ -1,10 +1,26 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { SucursalesModule } from './sucursales/sucursales.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ConfigModule.forRoot({
+    envFilePath: '.env',
+    isGlobal: true,
+  }),
+  MongooseModule.forRootAsync({
+    imports: [ConfigModule],
+    connectionName: "fravega",
+    useFactory: async (config: ConfigService) => ({
+        uri: config.get('sucursalDB'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        
+    }),
+    inject: [ConfigService],
+}),
+  SucursalesModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
