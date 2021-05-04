@@ -1,12 +1,11 @@
-import { IsLatitude, IsLongitude, IsString } from "class-validator";
+import { IsLatitude, IsLongitude, IsString } from 'class-validator';
 
-export class PuntoDto{
+export class PuntoDto {
+  @IsLatitude()
+  @IsString()
+  latitud: string;
 
-    @IsLatitude()
-    @IsString()
-    latitud:string;
-
-    @IsLongitude()
-    @IsString()
-    longitud:string;
+  @IsLongitude()
+  @IsString()
+  longitud: string;
 }

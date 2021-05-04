@@ -5,8 +5,13 @@ import { SucursalesController } from './sucursales.controller';
 import { SucursalesServices } from './sucursales.service';
 
 @Module({
-  imports:[MongooseModule.forFeature([{ name: Sucursal.name, schema: SucursalSchema }],"fravega")],
+  imports: [
+    MongooseModule.forFeature(
+      [{ name: Sucursal.name, schema: SucursalSchema }],
+      'fravega',
+    ),
+  ],
   controllers: [SucursalesController],
-  providers: [SucursalesServices]
+  providers: [SucursalesServices],
 })
 export class SucursalesModule {}

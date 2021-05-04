@@ -1,14 +1,13 @@
-import { IsLatitude, IsLongitude, IsString } from "class-validator";
+import { IsLatitude, IsLongitude, IsString } from 'class-validator';
 
-export class SucursalDto{
+export class SucursalDto {
+  @IsString()
+  direccion: string;
 
-    @IsString()
-    direccion:string;
+  @IsLatitude()
+  latitud: string;
 
-    @IsLatitude()
-    latitud:string;
-
-    @IsLongitude()
-    @IsString()
-    longitud:string;
+  @IsLongitude()
+  @IsString()
+  longitud: string;
 }

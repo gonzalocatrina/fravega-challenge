@@ -1,19 +1,16 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
-import { Document, ObjectId } from 'mongoose';
-
+import { Document } from 'mongoose';
 
 @Schema({ timestamps: true, optimisticConcurrency: true, strict: true })
 export class Sucursal extends Document {
+  @Prop()
+  direccion: string;
 
-    @Prop()
-    direccion:string;
+  @Prop()
+  latitud: string;
 
-    @Prop()
-    latitud:string;
-
-    @Prop()
-    longitud:string;
+  @Prop()
+  longitud: string;
 }
 
 export const SucursalSchema = SchemaFactory.createForClass(Sucursal);
